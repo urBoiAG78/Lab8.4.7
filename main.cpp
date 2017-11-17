@@ -43,10 +43,6 @@ public:
             }
         }
     }
-    void operator+(const int& rhs){
-        add(rhs);
-    }
-    
     void add(Matrix& m){
         for(int i =0; i < 2; i++)
         {
@@ -56,15 +52,47 @@ public:
             }
         }
     }
+    void subtract(const int& s)
+    {
+        for(int i =0; i < 2; i++)
+        {
+            for(int j =0; j < 2; j++)
+            {
+                v[i][j] -= s;
+            }
+        }
+    }
+    void subtract(Matrix& m){
+        for(int i =0; i < 2; i++)
+        {
+            for(int j =0; j < 2; j++)
+            {
+                v[i][j] -= m.v[i][j];
+            }
+        }
+    }
+    void operator+(const int& rhs){
+        add(rhs);
+    }
     void operator+(const Matrix& m){
         add(m);
     }
+    
 private:
     int v[2][2];
 };
 
 int main(int argc, char** argv) {
-
+    Matrix m(3,4,5,6);
+    Matrix n(3,7,2,5);
+    m.print(cout);
+    n.print(cout);
+    
+    
+    
+    m.add(n);
+    
+    m.print(cout);
     return 0;
 }
 
